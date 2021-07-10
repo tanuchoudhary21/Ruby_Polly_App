@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
     def index
-        render
-      end
+        polls = Poll.all
+        render status: :ok, json: { polls: polls }
+    end
 end
