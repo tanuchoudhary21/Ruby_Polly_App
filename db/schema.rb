@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_10_165310) do
+ActiveRecord::Schema.define(version: 2021_07_11_140155) do
 
   create_table "polls", force: :cascade do |t|
     t.text "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug", null: false
+    t.index ["slug"], name: "index_polls_on_slug", unique: true
   end
 
 end
