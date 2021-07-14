@@ -1,4 +1,8 @@
 class Poll < ApplicationRecord
+    has_many :options, dependent: :destroy
+    has_many :votes, dependent: :destroy
+    accepts_nested_attributes_for :options
+
     validates :title, presence: true, length: { maximum: 150 }
     validates :slug, uniqueness: true
     validate :slug_not_changed

@@ -4,6 +4,7 @@ import { initializeLogger } from "common/logger";
 import { setAuthHeaders } from "apis/axios";
 import Container from "./components/Container";
 import Dashboard from "./components/Dashboard";
+import CreatePoll from "./components/Polls/CreatePoll";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -17,6 +18,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={Container} />
+        <Route exact path="/polls/create" component={CreatePoll} />
         <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     </Router>
