@@ -62,10 +62,10 @@ class PollsController < ApplicationController
             render json: {errors: errors}
         end
   
-        def load_votes
-          @votes = Vote.where(poll_id: params[:id])
-          rescue ActiveRecord::RecordNotFound => errors
-            render json: {errors: errors}
-        end
+        # def load_votes
+        #   @votes = Vote.where(poll_id: params[:id])
+        #   rescue ActiveRecord::RecordNotFound => errors
+        #     render json: {errors: errors}
+        # end
   
   end

@@ -3,7 +3,7 @@ import React from "react";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 
-const Table = ({ data, showPoll, updatePoll }) => {
+const Table = ({ data, showPoll, updatePoll, destroyPoll }) => {
   return (
     <div className="flex flex-col mt-10 ">
       <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -15,6 +15,7 @@ const Table = ({ data, showPoll, updatePoll }) => {
                 data={data}
                 showPoll={showPoll}
                 updatePoll={updatePoll}
+                destroyPoll={destroyPoll}
               />
             </table>
           </div>

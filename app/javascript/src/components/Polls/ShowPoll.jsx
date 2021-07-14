@@ -26,7 +26,7 @@ const ShowPoll = () => {
     try {
       const response = await pollsApi.show(slug);
       logger.info("Data", response.data);
-      //   const userVotes = response.data.votes.find(v => v.user_id == userId);
+      const userVotes = response.data.votes.find(v => v.user_id == userId);
       setPollDetails(response.data.poll);
       setOption_1(response.data.options[0]);
       setOption_2(response.data.options[1]);
