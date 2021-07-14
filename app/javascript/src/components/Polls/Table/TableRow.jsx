@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Logger from "js-logger";
 
-const TableRow = ({ data, showPoll }) => {
+const TableRow = ({ data, showPoll, updatePoll }) => {
   return (
     <tbody className="bg-white divide-y divide-gray-200">
       {data.map(rowData => (
@@ -34,6 +34,7 @@ const TableRow = ({ data, showPoll }) => {
             <a
               className="text-bb-purple text-opacity-50
               hover:text-opacity-100"
+              onClick={() => updatePoll(rowData.slug)}
             >
               Edit
             </a>

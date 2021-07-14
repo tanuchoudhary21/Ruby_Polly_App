@@ -6,7 +6,7 @@ const show = slug => axios.get(`/polls/${slug}`);
 
 const create = payload => axios.post("/polls/", payload);
 
-const update = ({ id, payload }) => axios.put(`/polls/${id}`, payload);
+const update = ({ slug, payload }) => axios.put(`/polls/${slug}`, payload);
 
 const destroy = id => axios.delete(`/polls/${id}`);
 
