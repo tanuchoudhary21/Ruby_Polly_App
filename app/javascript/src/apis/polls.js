@@ -2,7 +2,7 @@ import axios from "axios";
 
 const list = () => axios.get("/polls");
 
-const show = id => axios.get(`/polls/${id}`);
+const show = slug => axios.get(`/polls/${slug}`);
 
 const create = payload => axios.post("/polls/", payload);
 

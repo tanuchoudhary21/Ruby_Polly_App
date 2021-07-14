@@ -21,6 +21,10 @@ const Dashboard = ({ history }) => {
     }
   };
 
+  const showPoll = slug => {
+    history.push(`/polls/${slug}/show`);
+  };
+
   useEffect(() => {
     fetchPolls();
   }, []);
@@ -36,7 +40,7 @@ const Dashboard = ({ history }) => {
   if (!either(isNil, isEmpty)(polls)) {
     return (
       <Container>
-        <ListPolls data={polls} />
+        <ListPolls data={polls} showPoll={showPoll} />
       </Container>
     );
   }
