@@ -13,12 +13,6 @@ const TableRow = ({ data, showPoll, updatePoll, destroyPoll }) => {
           >
             {rowData.title}
           </td>
-          <td
-            className="px-6 py-4 text-sm font-medium
-            leading-5 text-bb-gray whitespace-no-wrap"
-          >
-            {rowData.id}
-          </td>
           <td className="px-6 py-4 text-sm font-medium leading-5 text-right cursor-pointer">
             <a
               className="text-bb-purple"

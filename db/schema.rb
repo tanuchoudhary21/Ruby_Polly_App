@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_14_071346) do
+ActiveRecord::Schema.define(version: 2021_07_14_122654) do
 
   create_table "options", force: :cascade do |t|
     t.string "option", null: false
@@ -24,8 +24,21 @@ ActiveRecord::Schema.define(version: 2021_07_14_071346) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug", null: false
+    t.integer "user_id"
     t.index ["slug"], name: "index_polls_on_slug", unique: true
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.string "authentication_token"
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
   add_foreign_key "options", "polls", on_delete: :cascade
+  add_foreign_key "polls", "users", on_delete: :cascade
 end

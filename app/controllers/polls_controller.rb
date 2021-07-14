@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-    # before_action :authenticate_user_using_x_auth_token, except: :index
+    before_action :authenticate_user_using_x_auth_token, except: [:new, :edit]
     before_action :load_poll, only: %i[show update destroy]
     before_action :load_options, only: %i[show]
     # before_action :load_votes, only: %i[show]
@@ -47,7 +47,7 @@ class PollsController < ApplicationController
       
         def poll_params
           params.require(:poll).permit(:title, :options_attributes => [:id, :option])
-          # .merge(user_id: @current_user.id)
+          .merge(user_id: @current_user.id)
         end
   
         def load_poll

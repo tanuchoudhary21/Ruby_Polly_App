@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Container from "components/Container";
 import PollForm from "./Form/PollForm";
-// import PageLoader from "components/PageLoader";
+import PageLoader from "components/PageLoader";
 import pollsApi from "apis/polls";
-// import usersApi from "apis/users";
+import usersApi from "apis/users";
 
 const CreatePoll = ({ history }) => {
   const [title, setTitle] = useState("");
@@ -11,10 +11,10 @@ const CreatePoll = ({ history }) => {
   const [option_2, setOption_2] = useState("");
   const [option_3, setOption_3] = useState("");
   const [option_4, setOption_4] = useState("");
-  //   const [userId, setUserId] = useState("");
-  //   const [users, setUsers] = useState([]);
+  const [userId, setUserId] = useState("");
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  //   const [pageLoading, setPageLoading] = useState(true);
+  const [pageLoading, setPageLoading] = useState(true);
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -31,45 +31,45 @@ const CreatePoll = ({ history }) => {
         },
       });
       setLoading(false);
-      history.push("/dashboard");
+      history.push("/");
     } catch (error) {
       logger.error("Error creating Poll", error);
       setLoading(false);
     }
   };
 
-  //   const fetchUserDetails = async () => {
-  //     try {
-  //       const response = await usersApi.list();
-  //       setUsers(response.data.users);
-  //       setUserId(response.data.users[0].id);
-  //       setPageLoading(false);
-  //     } catch (error) {
-  //       logger.error(error);
-  //       setPageLoading(false);
-  //     }
-  //   };
+  const fetchUserDetails = async () => {
+    try {
+      const response = await usersApi.list();
+      setUsers(response.data.users);
+      setUserId(response.data.users[0].id);
+      setPageLoading(false);
+    } catch (error) {
+      logger.error(error);
+      setPageLoading(false);
+    }
+  };
 
-  //   useEffect(() => {
-  //     fetchUserDetails();
-  //   }, []);
+  useEffect(() => {
+    fetchUserDetails();
+  }, []);
 
-  //   if (pageLoading) {
-  //     return <PageLoader />;
-  //   }
+  if (pageLoading) {
+    return <PageLoader />;
+  }
 
   return (
     <Container>
       <PollForm
         setTitle={setTitle}
-        // setUserId={setUserId}
+        setUserId={setUserId}
         setOption_1={setOption_1}
         setOption_2={setOption_2}
         setOption_3={setOption_3}
         setOption_4={setOption_4}
         loading={loading}
         handleSubmit={handleSubmit}
-        // users={users}
+        users={users}
       />
     </Container>
   );
