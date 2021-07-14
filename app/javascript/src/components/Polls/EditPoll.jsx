@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import pollsApi from "apis/polls";
-// import usersApi from "apis/users";
+import usersApi from "apis/users";
 import Container from "components/Container";
 import PageLoader from "components/PageLoader";
 import { useParams } from "react-router-dom";
@@ -41,7 +41,7 @@ const EditPoll = ({ history }) => {
         },
       });
       setLoading(false);
-      history.push("/dashboard");
+      history.push("/");
     } catch (error) {
       setLoading(false);
       logger.error(error);
@@ -61,7 +61,7 @@ const EditPoll = ({ history }) => {
     try {
       const response = await pollsApi.show(slug);
       logger.info("Edit Poll", response.data);
-      //   setUserId(response.data.poll.user_id);
+      setUserId(response.data.poll.user_id);
       setTitle(response.data.poll.title);
       setOption_1(response.data.options[0].option);
       setOption_2(response.data.options[1].option);
@@ -80,7 +80,7 @@ const EditPoll = ({ history }) => {
 
   const loadData = async () => {
     await fetchPollDetails();
-    // await fetchUserDetails();
+    await fetchUserDetails();
   };
 
   useEffect(() => {

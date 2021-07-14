@@ -9,7 +9,6 @@ import Button from "components/Button";
 
 const ShowPoll = () => {
   const { slug } = useParams();
-  //   const { id } = useParams();
   const userId = getFromLocalStorage("authUserId");
   const [pollDetails, setPollDetails] = useState([]);
   const [pageLoading, setPageLoading] = useState(true);
@@ -26,15 +25,15 @@ const ShowPoll = () => {
     try {
       const response = await pollsApi.show(slug);
       logger.info("Data", response.data);
-      const userVotes = response.data.votes.find(v => v.user_id == userId);
+      // const userVotes = response.data.votes.find(v => v.user_id == userId);
       setPollDetails(response.data.poll);
       setOption_1(response.data.options[0]);
       setOption_2(response.data.options[1]);
       setOption_3(response.data.options[2]);
       setOption_4(response.data.options[3]);
       setVotes(response.data.votes);
-      setvoteOption(userVotes ? userVotes.option_id : userVotes);
-      setVoted(Boolean(userVotes));
+      // setvoteOption(userVotes ? userVotes.option_id : userVotes);
+      // setVoted(Boolean(userVotes));
     } catch (error) {
       logger.error(error);
     } finally {
