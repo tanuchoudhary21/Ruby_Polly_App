@@ -21,6 +21,15 @@ const Dashboard = ({ history }) => {
     }
   };
 
+  const destroyPoll = async slug => {
+    try {
+      await pollsApi.destroy(slug);
+      await fetchTasks();
+    } catch (error) {
+      logger.error(error);
+    }
+  };
+
   const showPoll = slug => {
     history.push(`/polls/${slug}/show`);
   };
@@ -44,7 +53,12 @@ const Dashboard = ({ history }) => {
   if (!either(isNil, isEmpty)(polls)) {
     return (
       <Container>
-        <ListPolls data={polls} showPoll={showPoll} updatePoll={updatePoll} />
+        <ListPolls
+          data={polls}
+          showPoll={showPoll}
+          updatePoll={updatePoll}
+          destroyPoll={destroyPoll}
+        />
       </Container>
     );
   }

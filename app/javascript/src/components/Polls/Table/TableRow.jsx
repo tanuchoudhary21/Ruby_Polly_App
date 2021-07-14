@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Logger from "js-logger";
 
-const TableRow = ({ data, showPoll, updatePoll }) => {
+const TableRow = ({ data, showPoll, updatePoll, destroyPoll }) => {
   return (
     <tbody className="bg-white divide-y divide-gray-200">
       {data.map(rowData => (
@@ -43,7 +43,12 @@ const TableRow = ({ data, showPoll, updatePoll }) => {
             className="px-6 py-4 text-sm font-medium
             leading-5 text-right cursor-pointer"
           >
-            <a className=" hover:text-bb-red">Delete</a>
+            <a
+              className=" hover:text-bb-red"
+              onClick={() => destroyPoll(rowData.slug)}
+            >
+              Delete
+            </a>
           </td>
         </tr>
       ))}
