@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Logger from "js-logger";
 
-const TableRow = ({ data }) => {
+const TableRow = ({ data, showPoll }) => {
   return (
     <tbody className="bg-white divide-y divide-gray-200">
       {data.map(rowData => (
@@ -18,6 +18,14 @@ const TableRow = ({ data }) => {
             leading-5 text-bb-gray whitespace-no-wrap"
           >
             {rowData.id}
+          </td>
+          <td className="px-6 py-4 text-sm font-medium leading-5 text-right cursor-pointer">
+            <a
+              className="text-bb-purple"
+              onClick={() => showPoll(rowData.slug)}
+            >
+              Show
+            </a>
           </td>
           <td
             className="px-6 py-4 text-sm font-medium
@@ -44,8 +52,9 @@ const TableRow = ({ data }) => {
 
 TableRow.propTypes = {
   data: PropTypes.array.isRequired,
-  destroyTask: PropTypes.func,
-  updateTask: PropTypes.func,
+  showPoll: PropTypes.func,
+  destroyPoll: PropTypes.func,
+  updatePoll: PropTypes.func,
 };
 
 export default TableRow;
