@@ -6,7 +6,7 @@ import { getFromLocalStorage, setToLocalStorage } from "helpers/storage";
 
 const NavBar = () => {
   const userName = getFromLocalStorage("authUserFirstName");
-  logger.info(userName);
+  // logger.info(userName);
 
   const handleLogout = async () => {
     try {
